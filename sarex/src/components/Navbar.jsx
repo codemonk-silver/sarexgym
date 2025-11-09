@@ -12,7 +12,7 @@ const Navbar = () => {
             </div>
             <nav className='flex gap-6 font-medium text-lg'>
                 <Link to='/'>Home</Link>
-                <Link>About</Link>
+                <Link to='/about'>About</Link>
                 <Link>Menu</Link>
                 <Link to='classes'>Classes</Link>
                 <Link to='/contact'>Contact</Link>
