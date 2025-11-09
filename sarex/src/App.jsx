@@ -4,6 +4,8 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import Contact from './pages/Contact';
+import OurClasses from './pages/OurClasses';
 
 
 const App = () => {
@@ -14,6 +16,8 @@ const App = () => {
       <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path='/contact' element={<Contact />} />
+            <Route path='/classes' element={<OurClasses />} />
       </Routes>
       <Footer />
 

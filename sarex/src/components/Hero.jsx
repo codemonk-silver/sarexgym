@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import heroimg from '../assets/heroimg.jpg'
 
 const Hero = () => {
@@ -26,9 +27,9 @@ const Hero = () => {
           </p>
 
           {/* 🎨 Custom background just for the button */}
-          <button className="bg-green-600 hover:bg-green-700 text-white text-xl px-10 py-3 rounded-lg font-medium transition-all duration-300">
+          <Link to='/contact' className="bg-green-600 hover:bg-green-700 text-white text-xl px-10 py-3 rounded-lg font-medium transition-all duration-300">
             Join Us
-          </button>
+          </Link>
         </div>
       </div>
     </div>

@@ -11,13 +11,13 @@ const Navbar = () => {
                 <p className='font-bold text-2xl'>Sarex</p>
             </div>
             <nav className='flex gap-6 font-medium text-lg'>
-                <Link>Home</Link>
+                <Link to='/'>Home</Link>
                 <Link>About</Link>
                 <Link>Menu</Link>
-                <Link>Classes</Link>
-                <Link>Contact</Link>
+                <Link to='classes'>Classes</Link>
+                <Link to='/contact'>Contact</Link>
             </nav>
-            <button className='bg-black px-3 py-1 font-medium text-md text-white rounded-xl'>CONTACT US</button>
+            <button className='bg-black px-6 py-1 font-medium text-md text-white rounded-xl'>CONTACT US</button>
         </div>
     </div>
   )

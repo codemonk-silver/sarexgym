@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Dumbbell, Heart, Users } from 'lucide-react' // icons
 import pt from '../assets/pt.png'
 import yoga from '../assets/yoga.jpg'
@@ -10,9 +11,9 @@ const Classes = () => {
       {/* Header Section */}
       <div className='flex justify-between items-center'>
         <p className='font-bold text-6xl'>Our Classes</p>
-        <button className='px-6 py-2 bg-black text-white text-2xl rounded-full'>
+        <Link to='/classes' className='px-6 py-2 bg-black text-white text-2xl rounded-full'>
           View all classes
-        </button>
+        </Link>
       </div>
 
       {/* Image Cards */}
