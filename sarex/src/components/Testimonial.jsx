@@ -9,7 +9,7 @@ const Testimonial = () => {
     {
       id: 1,
       name: "Sarah Williams",
-      desc: "Joining Sarex completely changed my fitness journey. The trainers are amazing, and I’ve never felt stronger or more confident!",
+      desc: "Joining Sarex completely changed my fitness journey. The trainers are amazing, and I've never felt stronger or more confident!",
       image: test2,
     },
     {
@@ -27,40 +27,58 @@ const Testimonial = () => {
   ];
 
   const [current, setCurrent] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
-  const nextSlide = () => setCurrent((prev) => (prev + 1) % testimonials.length);
-  const prevSlide = () => setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  const nextSlide = () => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setCurrent((prev) => (prev + 1) % testimonials.length);
+    setTimeout(() => setIsTransitioning(false), 700);
+  };
+
+  const prevSlide = () => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setTimeout(() => setIsTransitioning(false), 700);
+  };
 
   return (
-    <div className="px-10 md:px-32 py-20">
-      <div className="relative w-full overflow-hidden min-h-[500px] rounded-xl">
+    <div className="px-4 sm:px-10 md:px-32 py-10 md:py-20">
+      <div className="relative w-full overflow-hidden min-h-[400px] sm:min-h-[500px] rounded-xl">
         {testimonials.map((item, index) => (
           <div
             key={item.id}
-            className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-              index === current ? "opacity-100" : "opacity-0 pointer-events-none"
+            className={`absolute inset-0 transition-all duration-700 ease-in-out ${
+              index === current 
+                ? "opacity-100 transform translate-x-0" 
+                : index < current 
+                  ? "opacity-0 transform -translate-x-full" 
+                  : "opacity-0 transform translate-x-full"
             }`}
           >
             <div className="flex flex-col md:flex-row w-full h-full">
               {/* Left Text Section */}
-              <div className="md:w-1/2 flex flex-col justify-center text-left bg-black p-10 md:p-14">
-                <Quote className="text-green-500 mb-5" size={40} />
-                <p className="text-lg mb-6 leading-relaxed italic text-white">
-                  “{item.desc}”
+              <div className="w-full md:w-1/2 flex flex-col justify-center text-center md:text-left bg-black p-6 sm:p-10 md:p-14">
+                <Quote className="text-green-500 mb-4 sm:mb-5 transition-all duration-500 ease-out hover:scale-110 hover:rotate-12" size={30} />
+                <p className="text-base sm:text-lg mb-4 sm:mb-6 leading-relaxed italic text-white transition-all duration-500 ease-out hover:text-gray-200">
+                  "{item.desc}"
                 </p>
-                <p className="text-xl font-semibold text-white">{item.name}</p>
+                <p className="text-lg sm:text-xl md:text-2xl font-semibold text-white transition-all duration-500 ease-out hover:text-green-400">
+                  {item.name}
+                </p>
 
                 {/* Navigation */}
-                <div className="flex gap-4 mt-10">
+                <div className="flex justify-center md:justify-start gap-4 mt-6 sm:mt-10">
                   <button
                     onClick={prevSlide}
-                    className="bg-green-500 text-white p-3 rounded-full hover:bg-green-600 transition"
+                    className="bg-green-500 text-white p-2 sm:p-3 rounded-full transition-all duration-300 ease-out hover:bg-green-600 hover:scale-110 hover:-translate-x-1"
                   >
                     <ChevronLeft />
                   </button>
                   <button
                     onClick={nextSlide}
-                    className="bg-green-500 text-white p-3 rounded-full hover:bg-green-600 transition"
+                    className="bg-green-500 text-white p-2 sm:p-3 rounded-full transition-all duration-300 ease-out hover:bg-green-600 hover:scale-110 hover:translate-x-1"
                   >
                     <ChevronRight />
                   </button>
@@ -68,11 +86,11 @@ const Testimonial = () => {
               </div>
 
               {/* Right Image Section */}
-              <div className="md:w-1/2 flex">
+              <div className="w-full md:w-1/2 flex mt-4 md:mt-0">
                 <img
                   src={item.image}
                   alt={item.name}
-                  className="w-full h-full object-cover object-top"
+                  className="w-full h-[250px] sm:h-[350px] md:h-full object-cover object-top rounded-md transition-all duration-700 ease-out hover:scale-105"
                 />
               </div>
             </div>
